@@ -5,15 +5,20 @@
   
 
   
-  <title>Category: 宏 | test</title>
+  <title>工作代码重构1 | test</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="test">
-<meta property="og:url" content="http://yoursite.com/categories/宏/index.html">
+  <meta name="description" content="###">
+<meta name="keywords" content="重构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="工作代码重构1">
+<meta property="og:url" content="http://yoursite.com/2018/01/31/工作代码重构1/index.html">
 <meta property="og:site_name" content="test">
+<meta property="og:description" content="###">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-01-31T14:38:41.261Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="test">
+<meta name="twitter:title" content="工作代码重构1">
+<meta name="twitter:description" content="###">
   
     <link rel="alternate" href="/atom.xml" title="test" type="application/atom+xml">
   
@@ -57,40 +62,60 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/12/17/初见/" class="archive-article-date">
-  <time datetime="2017-12-17T11:18:23.000Z" itemprop="datePublished">12月 17</time>
+        <section id="main"><article id="post-工作代码重构1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/31/工作代码重构1/" class="article-date">
+  <time datetime="2018-01-31T14:03:42.000Z" itemprop="datePublished">2018-01-31</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/工作/">工作</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/17/初见/">初见</a>
+    <h1 class="article-title" itemprop="name">
+      工作代码重构1
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>###</p>
+<a id="more"></a>
+<p>&emsp;&emsp;想写点总结的时候，大多都发现没什么好写的，归根结底还是自己的沉淀还不够。上周，由于忍受不了原来零散又重复的校验调用，趁着迭代的时候对系统的一部分功能进行了重构。<br>&emsp;&emsp;由于业务场景需要，在用户下单前需要做一系列校验，例如：黑名单、可交单、征信等等。又由于校验间存在先后顺序关系，在原有实现里，就出现了深层的if else调用。同时在校验未通过的时候需要进行不同的记录。在多次需求迭代之后，虽然下单的业务没有特别大的变化，但是代码却表现的异常冗余。<br>&emsp;&emsp;由于校验的性质，我考虑到是使用责任链的典型场景，将其中的规则抽象为一个个的rule，提供一个ruleService，维护不同场景下的rule list，并且结合spring让其可配置。调用方只需要描述要执行的rule list，ruleService就可以提供服务，当需要添加规则时，也只需要增加rule的实现类，对其配置，无需改动调用方代码和ruleService,让校验的执行和调用方业务解耦。<br>&emsp;&emsp;代码的连接之后会补充上来</p>
 
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/01/31/工作代码重构1/" data-id="cjd36mclu0005f0ups7w82o1l" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/重构/">重构</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/01/14/工作中的线程问题-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">工作中的静态条件问题-1</div>
+    </a>
+  
+</nav>
+
+  
+</article>
 
 </section>
         
